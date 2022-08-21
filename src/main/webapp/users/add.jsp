@@ -108,29 +108,21 @@
                         <h6 class="m-0 font-weight-bold text-primary">Add new User</h6>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-
-                                <c:forEach var="user" items="${users}">
-
-                                    <c:if test="${user.id == userID}">
-                                        <tr>
-                                            <td>ID</td>
-                                            <td>${userID}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Username</td>
-                                            <td>${user.username}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Email</td>
-                                            <td>${user.email}</td>
-                                        </tr>
-                                    </c:if>
-
-                                </c:forEach>
-                            </table>
-                        </div>
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="userName">Username</label>
+                                <input name="userName" type="text" class="form-control" id="userName" placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <label for="userEmail">Email</label>
+                                <input name="userEmail" type="email" class="form-control" id="userEmail" placeholder="User Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="userPassword">Password</label>
+                                <input name="userPassword" type="password" class="form-control" id="userPassword" placeholder="User password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
                     </div>
                 </div>
             </div>

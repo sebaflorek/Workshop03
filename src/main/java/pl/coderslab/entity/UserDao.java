@@ -36,7 +36,7 @@ public class UserDao {
         }
     }
 
-    public static User read(int id) { // musiałem zmienić na static, by w MainDao wywołać metodę.
+    public User read(int id) { // musiałem zmienić na static, by w MainDao wywołać metodę.
         try (Connection conn = DbUtil.connectWorkshop3()) {
             PreparedStatement prStmt = conn.prepareStatement(READ_USER_QUERY);
             prStmt.setInt(1, id);
@@ -55,7 +55,7 @@ public class UserDao {
         return null;
     }
 
-    public static void update(User user) { // musiałem zmienić na static, by w MainDao wywołać metodę.
+    public void update(User user) { // musiałem zmienić na static, by w MainDao wywołać metodę.
         try (Connection conn = DbUtil.connectWorkshop3()) {
             PreparedStatement prStmt = conn.prepareStatement(UPDATE_DATA_QUERY);
             prStmt.setString(1, user.getEmail());
@@ -69,7 +69,7 @@ public class UserDao {
         }
     }
 
-    public static void delete(int userID) {
+    public void delete(int userID) {
         try (Connection conn = DbUtil.connectWorkshop3()) {
             PreparedStatement prStmt = conn.prepareStatement(DELETE_USER_QUERY);
             prStmt.setInt(1, userID);
@@ -101,7 +101,7 @@ public class UserDao {
         // return users
     }
 
-    private static User[] addToArray(User u, User[] users) {
+    private User[] addToArray(User u, User[] users) {
         User[] tmpUsers = Arrays.copyOf(users, users.length + 1); // Tworzymy kopię tablicy powiększoną o 1.
         tmpUsers[users.length] = u; // Dodajemy obiekt na ostatniej pozycji.
         return tmpUsers; // Zwracamy nową tablicę.
