@@ -1,15 +1,11 @@
-# Coders Lab - Warsztat 03 :
-Warsztat dotyczący servletów
-## Readme
-> Opis warsztatu:
+# Coders Lab - Workshop 03 :
+UserCRUD - simple user management application (based on Workshop 02).
+## UserCRUD
+> Available features
 
-1. Przykładowy tekst
-2. Przykładowy teskt.
-
-
-Przykładowy tekst.
-Przykładowy tekst.\
-Przykładowy tekst.\
-Przykładowy tekst.
+1. List of all Users
+2. Adding new User
+3. Editing User
+4. Deleting User
 
 

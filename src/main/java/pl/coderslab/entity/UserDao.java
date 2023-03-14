@@ -17,14 +17,14 @@ public class UserDao {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
-    public User create(User user) { // Czy nie powinna być static, skoro zapytanie jest static? Czemu działa bez static?
+    public User create(User user) {
         try (Connection conn = DbUtil.connectWorkshop3()) {
             PreparedStatement prStmt = conn.prepareStatement(CREATE_USER_QUERY, Statement.RETURN_GENERATED_KEYS);
             prStmt.setString(1, user.getEmail());
             prStmt.setString(2, user.getUsername());
             prStmt.setString(3, hashPassword(user.getPassword()));
             prStmt.executeUpdate();
-            // pobierz z bazy identyfikator
+            // pobranie z bazy identyfikatora
             ResultSet resultSet = prStmt.getGeneratedKeys();
             if (resultSet.next()) {
                 user.setId(resultSet.getInt(1));
@@ -36,7 +36,7 @@ public class UserDao {
         }
     }
 
-    public User read(int id) { // musiałem zmienić na static, by w MainDao wywołać metodę.
+    public User read(int id) {
         try (Connection conn = DbUtil.connectWorkshop3()) {
             PreparedStatement prStmt = conn.prepareStatement(READ_USER_QUERY);
             prStmt.setInt(1, id);
@@ -55,7 +55,7 @@ public class UserDao {
         return null;
     }
 
-    public void update(User user) { // musiałem zmienić na static, by w MainDao wywołać metodę.
+    public void update(User user) {
         try (Connection conn = DbUtil.connectWorkshop3()) {
             PreparedStatement prStmt = conn.prepareStatement(UPDATE_DATA_QUERY);
             prStmt.setString(1, user.getEmail());
